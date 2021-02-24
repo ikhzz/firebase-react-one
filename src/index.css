@@ -1,13 +1,85 @@
-body {
+/* Global Style */
+* {
+  list-style-type: none;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+  text-decoration: none;
+  font-family: 'Andika New Basic', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+}
+body{
+  margin: 0;
+  padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+@font-face {
+  font-family: 'Andika New Basic';
+  src: url(./AndikaNewBasic\ /AndikaNewBasic-Regular.ttf);
+}
+a,a:link, a:visited, a:hover, a:active {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+button{
+  background-color: rgb(52, 126, 247);
+  border: 1px solid rgb(27, 110, 243);
+  padding: 2px 8px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 1px 2px rgb(95, 154, 248);
+  margin-right: 10px;
+}
+button:hover{
+  background-color: rgb(95, 154, 248);
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+/* root style */
+/* #root{
+  display: grid;
+  justify-content: center;
+  width: 100%;
+} */
+header{
+  border: 1px solid black;
+}
+header{
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+aside {
+  position: fixed;
+}
+.main {
+  display: grid;
+  padding-left: 200px;
+}
+/* login menu */
+.login{
+  position: absolute;
+  /* background-color: red; */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  place-content: center;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.login li{
+  display: grid;
+  background-color: white;
+  padding: 10px 10px 0px;
+}
+.login li:last-child{
+  padding-bottom: 10px;
+}
+/* Login form */
+.loginForm{
+  justify-items: center;
+  gap: 10px;
 }

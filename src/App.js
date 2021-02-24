@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import ActionBar from "./component/ActionBar.js";
+import Navbar from "./component/Navbar.js";
+import SourceLearning from "./component/SourceLearning.js";
+import SourceList from "./component/SourceList.js";
+import { AuthContextProvider } from "./context/AuthContext.js";
+import SourceContextProvider from "./context/SourceContext.js"
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter >
+
+        <AuthContextProvider>
+          <Navbar />
+          <div className="main">
+          <SourceContextProvider>
+            <ActionBar />
+          <Switch>
+            <Route exact path="/">
+                <SourceLearning />
+            </Route>
+            <Route path="/sourcelist/:id">
+              <SourceList />
+            </Route>
+          </Switch>
+          </SourceContextProvider>
+          </div>
+        </AuthContextProvider>
+
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
