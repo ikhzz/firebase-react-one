@@ -16,35 +16,65 @@ const ActionBar = () => {
     from : "",
     language: ""
   })
-  
+  const [input, setInput] = useState("source")
   const checkAuth = () => {
     let info = firebase.auth().currentUser  
     console.log(info)
     console.log(auth)
   }
+  const [display, setDisplay] = useState("none")
   return (
-    <ul className="login" >
+    <>
+    <div className="showLogin">
+      <button onClick={()=> setDisplay("grid")}>login</button>
+    </div>
+    
+    <ul className="login" style={{display: display}}>
       <li>
-        <span>Tambah Sumber</span>
-        <span>Tambah Bookmark</span>
+        <span onClick={()=> setDisplay("none")}>X</span>
       </li>
-      <li className="loginForm">
-        <label>Login</label>
-        <input type="text" value={login.email} onChange={(e)=> setLogin(prev => ({...prev, email : e.target.value}))}></input>
-        <input type="text" value={login.pass} onChange={(e)=> setLogin(prev => ({...prev, pass : e.target.value}))}></input>
-        <button onClick={()=> signIn(login.email, login.pass)}>login</button>
+      {auth &&
+        <li className="inputTab">
+        <span onClick={()=> setInput("source")}>Sumber</span>
+        <span onClick={()=> setInput("bookmark")}>Bookmark</span>
       </li>
-      <li>
-        <input type="text" value={source.name} onChange={(e)=> setSource(prev => ({...prev, name : e.target.value}))}></input>
-        <input type="text" value={source.from} onChange={(e)=> setSource(prev => ({...prev, from : e.target.value}))}></input>
-        <input type="text" value={source.language} onChange={(e)=> setSource(prev => ({...prev, language : e.target.value}))}></input>
-        <button onClick={()=> newSource(source.name, source.from, source.language)}>tambah sumber</button>
-        <button onClick={checkAuth}>tambah playlist</button>
+      }
+      {!auth && 
+        <li className="loginForm">
+          <h3>Login</h3>
+          <input type="text" value={login.email} onChange={(e)=> setLogin(prev => ({...prev, email : e.target.value}))}></input>
+          <input type="text" value={login.pass} onChange={(e)=> setLogin(prev => ({...prev, pass : e.target.value}))}></input>
+          <button onClick={()=> signIn(login.email, login.pass)}>login</button>
       </li>
-      <li>
-        <button onClick={signOut}>logout</button>
-      </li>
+      }
+      {auth && input == "source" &&
+        <li>
+          <h3>Tambah Sumber</h3>
+          <input type="text" value={source.name} onChange={(e)=> setSource(prev => ({...prev, name : e.target.value}))}></input>
+          <input type="text" value={source.from} onChange={(e)=> setSource(prev => ({...prev, from : e.target.value}))}></input>
+          <input type="text" value={source.language} onChange={(e)=> setSource(prev => ({...prev, language : e.target.value}))}></input>
+          <button onClick={()=> newSource(source.name, source.from, source.language)}>tambah sumber</button>
+          <button onClick={checkAuth}>tambah playlist</button>
+        </li>  
+      }
+      {auth && input == "bookmark" &&
+        <li>
+          <h3>Tambah Bookmark</h3>
+          <input type="text" ></input>
+          <input type="text" ></input>
+          <button onClick={()=> newSource(source.name, source.from, source.language)}>Tambah Bookmark</button>
+          <button onClick={checkAuth}>tambah playlist</button>
+        </li>  
+      }
+      
+      {auth && 
+        <li>
+          <button onClick={signOut}>logout</button>
+        </li>
+      }
+      
     </ul>
+    </>
   )
 }
 

@@ -12,9 +12,10 @@ const App = () => {
 
         <AuthContextProvider>
           <Navbar />
-          <div className="main">
+          
           <SourceContextProvider>
             <ActionBar />
+          <div className="main">
           <Switch>
             <Route exact path="/">
                 <SourceLearning />
@@ -23,8 +24,9 @@ const App = () => {
               <SourceList />
             </Route>
           </Switch>
-          </SourceContextProvider>
           </div>
+          </SourceContextProvider>
+          
         </AuthContextProvider>
 
     </BrowserRouter>

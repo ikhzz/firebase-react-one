@@ -57,29 +57,64 @@ aside {
 .main {
   display: grid;
   padding-left: 200px;
+  animation: slidemain 0.8s forwards;
+}
+@keyframes slidemain {
+  0% { transform: translateX(100%); }
+  100% {transform: translateX(0%);}
 }
 /* login menu */
 .login{
   position: absolute;
+  z-index: 1;
   /* background-color: red; */
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  display: grid;
+  /* display: grid; */
   place-content: center;
   background-color: rgba(0, 0, 0, 0.2);
 }
-.login li{
+.login li:not(:first-child){
   display: grid;
   background-color: white;
   padding: 10px 10px 0px;
+  position: relative;
 }
 .login li:last-child{
   padding-bottom: 10px;
+}
+.login li:first-child{
+  justify-self: end;
+  cursor: pointer;
 }
 /* Login form */
 .loginForm{
   justify-items: center;
   gap: 10px;
+}
+/* inputTab */
+.login li.inputTab{
+  /* display: grid; */
+  grid-template-columns: auto auto;
+  column-gap: 10px;
+  border-bottom: 1px solid black;
+  background-color: rgb(95, 154, 248);
+  padding-bottom: 5px;
+}
+.inputTab span:hover {
+  cursor: pointer;
+  background-color: rgb(27, 110, 243);
+  
+}
+.inputTab span:not(:last-child) {
+  border-right: 1px solid black;
+}
+.inputTab span {
+  padding: 2px 4px;
+}
+.showLogin{
+  display: grid;
+  justify-content: end;
 }
