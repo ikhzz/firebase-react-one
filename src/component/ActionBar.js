@@ -35,9 +35,9 @@ const ActionBar = () => {
       </li>
       {auth &&
         <li className="inputTab">
-        <span onClick={()=> setInput("source")}>Sumber</span>
-        <span onClick={()=> setInput("bookmark")}>Bookmark</span>
-      </li>
+          <span onClick={()=> setInput("source")}>Sumber</span>
+          <span onClick={()=> setInput("bookmark")}>Bookmark</span>
+        </li>
       }
       {!auth && 
         <li className="loginForm">

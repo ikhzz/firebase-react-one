@@ -17,12 +17,12 @@ SourceContextProvider = (props) => {
   }
   //console.log(source)
   const newSource = (name, from, language ) => {
-    database.ref("source").push().set({
-      name,
-      from,
-      language 
-    }).then(getSource())
-    .catch(err => console.log(err))
+    // database.ref("source").push().set({
+    //   name,
+    //   from,
+    //   language 
+    // }).then(getSource())
+    // .catch(err => console.log(err))
   }
   const newPlaylist = (id, name, desc) => {
     database.ref(`source/${id}/list/`).push().set({

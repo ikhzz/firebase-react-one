@@ -63,24 +63,29 @@ aside {
   0% { transform: translateX(100%); }
   100% {transform: translateX(0%);}
 }
+
 /* login menu */
 .login{
   position: absolute;
   z-index: 1;
-  /* background-color: red; */
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  /* display: grid; */
   place-content: center;
   background-color: rgba(0, 0, 0, 0.2);
+  gap: 10px;
+  align-content: center;
+  
 }
 .login li:not(:first-child){
   display: grid;
   background-color: white;
-  padding: 10px 10px 0px;
+  padding: 10px 10px 10px;
   position: relative;
+  border-radius: 10px;
+  gap: 5px;
+  justify-items: center;
 }
 .login li:last-child{
   padding-bottom: 10px;
@@ -93,23 +98,27 @@ aside {
 .loginForm{
   justify-items: center;
   gap: 10px;
+  border-radius: 20px;
 }
 /* inputTab */
 .login li.inputTab{
   /* display: grid; */
   grid-template-columns: auto auto;
-  column-gap: 10px;
+  column-gap: 5px;
   border-bottom: 1px solid black;
   background-color: rgb(95, 154, 248);
   padding-bottom: 5px;
+  border-radius: 20px 20px 0px 0px;
 }
-.inputTab span:hover {
+.login li.inputTab span:hover {
   cursor: pointer;
   background-color: rgb(27, 110, 243);
-  
+  border-radius: 10px;
 }
 .inputTab span:not(:last-child) {
   border-right: 1px solid black;
+  padding-right: 1px;
+  /* padding-right: 4px; */
 }
 .inputTab span {
   padding: 2px 4px;
