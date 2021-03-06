@@ -6,9 +6,9 @@ const SourceLearning = () => {
   console.log(source)
   //source && test(source)
   return (
-    <div>
-      <h1>Content</h1>
-      <ul>{source && test(source)}</ul>
+    <div className="source">
+      <h1>Source</h1>
+      <ul className="allSource">{source && test(source)}</ul>
     </div>
   )
 }
@@ -21,9 +21,9 @@ function test(data){
     return (
       <li key={key}>
         <p>{key}</p>
-        <p>{value["from"]}</p>
-        <p>{value["language"]}</p>
-        <p>{value["name"]}</p>
+        <p>From : {value["from"]}</p>
+        <p>Language : {value["language"]}</p>
+        <p>Name : {value["name"]}</p>
         <button>Daftar Playlist</button>
       </li>
     )

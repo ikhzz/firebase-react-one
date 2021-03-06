@@ -16,7 +16,7 @@ body{
 }
 @font-face {
   font-family: 'Andika New Basic';
-  src: url(./AndikaNewBasic\ /AndikaNewBasic-Regular.ttf);
+  src: url(./assets/AndikaNewBasic\ /AndikaNewBasic-Regular.ttf);
 }
 a,a:link, a:visited, a:hover, a:active {
   text-decoration: none;
@@ -51,13 +51,51 @@ header{
   display: grid;
   grid-template-columns: auto auto auto;
 }
+/* aside */
 aside {
   position: fixed;
+  z-index: 2;
+  background-color: #222831;
+  height: 100%;
+  width: 200px;
+  color: white;
+}
+aside > ul{
+  display: grid;
+  grid-template-rows: 150px minmax(470px, auto) 50px;
+  padding: 20px 0px;
+  gap: 20px;
+}
+aside ul li:first-child, aside ul li:nth-child(3) {
+  justify-self: center;
+}
+aside img{
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 6px 3px white;
+}
+
+/* link */
+.link {
+  display: grid;
+  gap: 10px;
+  align-content: flex-start;
+}
+.link a {
+  height: 30px;
+  margin: 0px 5px;
+  border-bottom: 2px solid rgb(200, 200, 200);
+  color: rgba(200, 200, 200, 0.7);
+}
+.link a:hover {
+  color: white;
 }
 .main {
   display: grid;
   padding-left: 200px;
-  animation: slidemain 0.8s forwards;
+  min-height: 97vh;
+  background-color: #393e46;
 }
 @keyframes slidemain {
   0% { transform: translateX(100%); }
@@ -67,7 +105,7 @@ aside {
 /* login menu */
 .login{
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   top: 0;
   left: 0;
   right: 0;
@@ -80,12 +118,14 @@ aside {
 }
 .login li:not(:first-child){
   display: grid;
-  background-color: white;
+  background-color: rgb(60, 60, 60);
   padding: 10px 10px 10px;
   position: relative;
   border-radius: 10px;
-  gap: 5px;
+  gap: 10px;
   justify-items: center;
+  color: white;
+  box-shadow: 4px 4px 1px 2px black;
 }
 .login li:last-child{
   padding-bottom: 10px;
@@ -94,12 +134,35 @@ aside {
   justify-self: end;
   cursor: pointer;
 }
-/* Login form */
-.loginForm{
-  justify-items: center;
-  gap: 10px;
+.login input{
   border-radius: 20px;
+  height: 30px;
+  width: 200px;
+  background-color: rgb(60, 60, 60);
+  color: white;
+  border: 1px solid rgb(52, 126, 247);
 }
+.login input::placeholder {
+  color: white;
+  text-align: center;
+}
+/* Login form */
+.login li.loginForm{
+  justify-items: center;
+  gap: 25px;
+  border-radius: 20px;
+  box-shadow: 4px 4px 1px 2px black;
+  background-color: rgb(60, 60, 60);
+  color: white;
+}
+.loginForm input {
+  border-radius: 20px;
+  height: 30px;
+  width: 200px;
+  background-color: rgb(60, 60, 60);
+  border: 1px solid rgb(52, 126, 247);
+}
+
 /* inputTab */
 .login li.inputTab{
   /* display: grid; */
@@ -116,9 +179,7 @@ aside {
   border-radius: 10px;
 }
 .inputTab span:not(:last-child) {
-  border-right: 1px solid black;
   padding-right: 1px;
-  /* padding-right: 4px; */
 }
 .inputTab span {
   padding: 2px 4px;
@@ -126,4 +187,48 @@ aside {
 .showLogin{
   display: grid;
   justify-content: end;
+  background-color: #393e46;
+}
+/* home */
+.home {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  animation: slidemain 0.8s forwards;
+  /* background-color: red; */
+}
+.home img {
+  border-radius: 50%;
+}
+/* source */
+.source {
+  padding: 0px 10px;
+  /* display: grid; */
+  animation: slidemain 0.8s forwards;
+}
+.source h1 {
+  width: 95%;
+  border-bottom: 2px solid rgb(180, 180, 180);
+  margin-bottom: 10px;
+}
+.allSource{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, auto));
+  gap: 10px;
+  
+}
+.allSource li {
+  /* background-color: red; */
+  padding: 10px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.6);
+  border: 4px solid black;
+  color: white;
+}
+@media screen and (max-width: 600px) {
+  aside {
+    transform: translateX(-100%);
+  }
+  .main {
+    padding-left: 0px;
+  }
 }

@@ -5,6 +5,7 @@ import SourceLearning from "./component/SourceLearning.js";
 import SourceList from "./component/SourceList.js";
 import { AuthContextProvider } from "./context/AuthContext.js";
 import SourceContextProvider from "./context/SourceContext.js"
+import Home from "./component/Home";
 
 const App = () => {
   return (
@@ -18,7 +19,10 @@ const App = () => {
           <div className="main">
           <Switch>
             <Route exact path="/">
-                <SourceLearning />
+              <Home />  
+            </Route>
+            <Route path="/allSource">
+              <SourceLearning />
             </Route>
             <Route path="/sourcelist/:id">
               <SourceList />

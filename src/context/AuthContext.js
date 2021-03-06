@@ -5,6 +5,7 @@ export const AuthContext = createContext(),
 
 AuthContextProvider = (props) => {
   const [auth, setAuth] = useState(null);
+  const [authError, setError] = useState({ error: false , msg: null})
 
   firebase.auth().onAuthStateChanged((user) => {
     if(user){
@@ -18,9 +19,14 @@ AuthContextProvider = (props) => {
   const signIn = (email, password) => {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then((credential) => {
+        console.log(credential)
         setAuth(credential.user.uid)
+        setError({ error: false , msg: null})
       })
-      .catch(err => console.log(err))
+      .catch(err => {
+        setError({error: true, msg: err.message});
+        console.log(err);
+      })
   }
   // Sign out
   const signOut = () => {
@@ -28,7 +34,7 @@ AuthContextProvider = (props) => {
       .catch(err => console.log(err))
   }
   return (
-    <AuthContext.Provider value={{auth, signIn, signOut}}>
+    <AuthContext.Provider value={{auth, signIn, signOut, authError}}>
       {props.children}
     </AuthContext.Provider>
   )
