@@ -13,7 +13,10 @@ const ActionBar = () => {
   return (
     <>
     <div className="showLogin">
-      <button onClick={()=> setDisplay("grid")}>login</button>
+      <button onClick={()=> setDisplay("grid")}>
+        {!auth && 'Login'}
+        {auth && 'Menu'}
+      </button>
     </div>
     
     <ul className="login" style={{display: display}}>
@@ -28,13 +31,13 @@ const ActionBar = () => {
 
       {!auth && <LoginForm />}
 
-      {auth && input == "source" && <SourceForm />}
+      {auth && input === "source" && <SourceForm />}
 
-      {auth && input == "bookmark" && <BookmarkForm />}
+      {auth && input === "bookmark" && <BookmarkForm />}
       
       {auth && 
         <li>
-          <button onClick={signOut}>logout</button>
+          <button onClick={signOut}>Logout</button>
         </li>}
       
     </ul>

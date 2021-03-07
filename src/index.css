@@ -213,16 +213,31 @@ aside img{
 }
 .allSource{
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, auto));
+  grid-template-columns: repeat(auto-fill, minmax(240px, auto));
   gap: 10px;
   
 }
-.allSource li {
+.allSource > li {
   /* background-color: red; */
   padding: 10px;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.6);
   border: 4px solid black;
   color: white;
+}
+.sourceList {
+  display: grid;
+  row-gap: 5px;
+  padding: 0px 5px;
+}
+.sourceList img{
+  border-radius: 50%;
+}
+.sourceList li:first-child {
+  justify-self: center;
+}
+.sourceList li:not(:first-child):not(:last-child) {
+  display: grid;
+  grid-template-columns: 80px auto;
 }
 @media screen and (max-width: 600px) {
   aside {

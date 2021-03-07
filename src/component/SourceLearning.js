@@ -1,5 +1,6 @@
 import { useContext} from "react"
 import { SourceContext } from "../context/SourceContext";
+import SourceList from "./SourceList";
 
 const SourceLearning = () => {
   const {source} = useContext(SourceContext);
@@ -17,14 +18,12 @@ export default SourceLearning;
 
 function test(data){
   
-  return Object.entries(data).map(([key,value]) => {
+  return Object.entries(data).map(([key, value]) => {
+    console.log(key)
+    console.log(value)
     return (
       <li key={key}>
-        <p>{key}</p>
-        <p>From : {value["from"]}</p>
-        <p>Language : {value["language"]}</p>
-        <p>Name : {value["name"]}</p>
-        <button>Daftar Playlist</button>
+        <SourceList  keys={key} detail={value}/>
       </li>
     )
   })
