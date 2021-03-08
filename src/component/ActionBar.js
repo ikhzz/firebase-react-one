@@ -19,7 +19,7 @@ const ActionBar = () => {
       </button>
     </div>
     
-    <ul className="login" style={{display: display}}>
+    <ul className="login" style={{display}}>
       <li>
         <span onClick={()=> setDisplay("none")}>X</span>
       </li>

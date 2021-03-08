@@ -11,7 +11,8 @@ const Navbar = () => {
         <li className="link">
           <Link to="/">Home</Link>
           <Link to="/allSource">Source</Link>
-          <Link to="/allBookmark">Bookmark</Link>
+          <Link to="/bookmark">Bookmark</Link>
+          <Link to="/myprofile">My Profile</Link>
         </li>
         <li>
           <p>©2020 by Fikri</p>

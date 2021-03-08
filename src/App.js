@@ -7,6 +7,8 @@ import { AuthContextProvider } from "./context/AuthContext.js";
 import SourceContextProvider from "./context/SourceContext.js"
 import StorageContextProvider from "./context/StorageContext.js";
 import Home from "./component/Home";
+import MyProfile from './component/MyProfile.js';
+import Bookmark from './component/Bookmark.js'
 
 const App = () => {
   return (
@@ -27,6 +29,12 @@ const App = () => {
               </Route>
               <Route path="/sourcelist/:id">
                 <SourceDetail />
+              </Route>
+              <Route path="/myprofile">
+                <MyProfile />
+              </Route>
+              <Route path="/bookmark">
+                <Bookmark />
               </Route>
             </Switch>
             </div>

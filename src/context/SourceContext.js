@@ -7,18 +7,33 @@ export const SourceContext = createContext(),
 
 SourceContextProvider = (props) => {
   const [source, setSource] = useState(null)
+  const [profile, setProfile] = useState(null)
+  const [project, setProject] = useState(null)
+  const [bookmark, setBookmark] = useState(null)
   const sourceRef = database.ref('source')
   const {uploadImage} = useContext(StorageContext)
 
-  useEffect(()=> getSource(), [])
   const getSource = () => {
-    database.ref("source").get().then(res => {
-      //console.log(res.val())
+    sourceRef.get().then(res => {
       setSource(res.val())
     })
     .catch(err => console.log(err))
   }
-  //console.log(source)
+  useEffect(()=> {
+    getSource()
+    database.ref('profile').get().then(res => {
+      setProfile(res.val())
+      console.log(res)
+      console.log(res.val())
+    })
+    database.ref('project').get().then(res => {
+      setProject(res.val())
+    })
+    database.ref('bookmark').get().then(res => {
+      setBookmark(res.val())
+    })
+  }, [])
+
   const newSource = (name, from, language, image ) => {
     const push = sourceRef.push()
     push.set({ name, from, language }).then(() => {
@@ -28,13 +43,15 @@ SourceContextProvider = (props) => {
     })
     .catch(err => console.log(err))
   }
+
   const newPlaylist = (id, name, desc) => {
     const push = sourceRef.child(`/${id}/list/`).push()
     push.set({name, desc}).then(getSource())
     .catch(err => console.log(err))
   }
+
   return (
-    <SourceContext.Provider value={{source, newSource, newPlaylist}}>
+    <SourceContext.Provider value={{source, profile, project, bookmark, newSource, newPlaylist}}>
       {props.children}
     </SourceContext.Provider>
   )

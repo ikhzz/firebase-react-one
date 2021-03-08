@@ -8,11 +8,7 @@ AuthContextProvider = (props) => {
   const [authError, setError] = useState({ error: false , msg: null})
 
   firebase.auth().onAuthStateChanged((user) => {
-    if(user){
-      setAuth(user.uid)
-    } else {
-      setAuth(null)
-    }
+    user ? setAuth(user.uid) : setAuth(null)
   })
   // Sign up is unnecessary for now
   // Sign in

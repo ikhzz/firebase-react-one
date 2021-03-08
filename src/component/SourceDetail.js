@@ -1,56 +1,76 @@
-import { useState, useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom";
-import {firebase} from "../firebaseConfig.js"
+import { useState, useContext } from "react";
+import { useLocation, useParams, useHistory } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext.js";
+import { SourceContext } from "../context/SourceContext.js";
 
-const database = firebase.database(),
-
-SourceDetail = () => {
-  const [lists, setList] = useState(null),
+const SourceDetail = () => {
+  const [playlist, setPLaylist] = useState({
+    playlistName: '', playlistDesc: ''
+  }),
+    [display, setDisplay] = useState('none'),
+    {auth} = useContext(AuthContext),
+    {source, newPlaylist} = useContext(SourceContext),
     {id} = useParams(),
-    location = useLocation()
-  console.log(id)
-  console.log(location.state)
-  useEffect(()=> {
-    // database.ref("source").child(id)
-    //   .child("list").get()
-    //   .then(res => {
-        
-    //     console.log(res)
-    //     console.log(res.val())
-    //     // Object.entries(res.val()).forEach(el => {
-    //     //   setList(el)
-    //     // });
-    //     const data = [res.val()]
-    //     setList(data)
-    //     console.log(lists)
-    //   })
-    //   .catch(err => console.log(err))
-  }, [])
+    location = useLocation(),
+    history = useHistory(),
+
+  inputPlaylist = () => {
+    newPlaylist(id, playlist.playlistName, playlist.playlistDesc)
+    setDisplay('none')
+    setPLaylist({playlistName: '', playlistDesc: ''})
+  }
 
   return (
-    <section>
-      {/* <ul>
-        {lists && Object.entries(lists[0]).map(([key, value]) => {
-          return (
-            <li key={key}>
-              <p>{value["playlistDesc"]}</p>
-              <p>{value["playlistName"]}</p>
-              <button>lihat catatan</button>
-              <button>tambah catatan</button>
-            </li>
-          )
-        })}
-      </ul> */}
-    </section>
+    <div className="detail" >
+      {source &&  <>
+       <ul className='inputPlaylist' style={{display}}>
+        <li>
+          <span onClick={()=> setDisplay("none")}>X</span>
+        </li>
+        <li>
+          <input type="text" placeholder='Playlist Name' value={playlist.playlistName}
+          onChange={e => setPLaylist(prev => ({...prev, playlistName: e.target.value}))}
+          />
+          <textarea placeholder='Playlist Desc' value={playlist.playlistDesc}
+          onChange={e => setPLaylist(prev => ({...prev, playlistDesc: e.target.value}))}
+          ></textarea>
+          <button onClick={inputPlaylist}>Add Playlist</button> 
+        </li>
+      </ul>
+      <section>
+        <h1>Detail for {source[id]['name']}</h1>
+      </section>
+      <section className="head">
+        <img src={location.state} alt="profile" />
+        <p>Name : {source[id]['name']}</p>
+        <p>From : {source[id]['from']}</p>
+        <p>Language : {source[id]['language']}</p>
+        <div>
+          <button onClick={()=>(history.goBack())} >Back</button>
+          {auth && <button onClick={()=> setDisplay('grid')}>add playlist</button>}
+        </div>
+      </section>
+      <section>
+        <ul className="detailList">
+          {source[id]['list'] && generateList(source[id]['list'], auth)}
+        </ul>
+      </section> 
+      </>
+    }</div>
   )
 }
 
-function generateList(data) {
-  return Object.entries(data[0]).map(([key,value]) => {
+function generateList(data, auth) {
+  return Object.entries(data).map(([key,value]) => {
     return (
-      <li key={key}>
-        <p>{key}</p>
-        <p>{value}</p>
+      <li  key={key}>
+        <span>Playlist Name</span><span>: {value['desc']}</span>
+        <span>Playlist Desc</span><span>: {value['name']}</span>
+        <span>
+          {/* on the second thought to add another layer list pages is annoying, on hold for idea */}
+          {auth && <button>Add Notes</button>}
+          <button>Check notes</button>
+        </span>
       </li>
     )
   })

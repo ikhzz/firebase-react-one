@@ -3,6 +3,7 @@ import {storage} from '../firebaseConfig.js';
 import { useHistory } from "react-router-dom";
 
 const SourceList = ({keys, detail}) => {
+  const history = useHistory();
   const [url, setUrl] = useState(null)
   console.log(keys)
   
@@ -11,12 +12,16 @@ const SourceList = ({keys, detail}) => {
       setUrl(url)
     })
   },[])
-  let history = useHistory()
+  
   const moveToDetail = () => {
-    history.push({
-      pathname: `/sourcelist/${keys}`,
-      state: detail
-    })
+    if(url){
+      history.push({
+        pathname: `/sourcelist/${keys}`,
+        state: url
+      })
+    } else {
+      console.log("tunggu brah gambarnya blum ada")
+    } 
   }
   return (
     <ul className="sourceList">
@@ -34,7 +39,6 @@ const SourceList = ({keys, detail}) => {
       </li>
       <li>
         <button onClick={moveToDetail}>Playlist</button>
-        <button>add playlist</button>
       </li>
     </ul>
   )
