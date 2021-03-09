@@ -15,23 +15,23 @@ SourceContextProvider = (props) => {
 
   const getSource = () => {
     sourceRef.get().then(res => {
-      setSource(res.val())
-    })
-    .catch(err => console.log(err))
+      setSource(res.val())}).catch(err => console.log(err))
+  }
+  const getProject = () => {
+    database.ref('project').get().then(res => {
+      setProject(res.val())}).catch(err => console.log(err))
+  }
+  const getBookmark = () => {
+    database.ref('bookmark').get().then(res => {
+      setBookmark(res.val())}).catch(err => console.log(err))
   }
   useEffect(()=> {
     getSource()
+    getProject()
+    getBookmark()
     database.ref('profile').get().then(res => {
       setProfile(res.val())
-      console.log(res)
-      console.log(res.val())
-    })
-    database.ref('project').get().then(res => {
-      setProject(res.val())
-    })
-    database.ref('bookmark').get().then(res => {
-      setBookmark(res.val())
-    })
+    })    
   }, [])
 
   const newSource = (name, from, language, image ) => {
@@ -50,12 +50,21 @@ SourceContextProvider = (props) => {
     .catch(err => console.log(err))
   }
 
+  const newProject = (title, desc, language, link) => {
+    database.ref('project').push({ title, desc, language, link })
+      .then(getProject()).catch()
+  }
+
+  const newBookmark = (name, desc, link) => {
+    database.ref('bookmark').push({name, desc, link})
+      .then(getBookmark()).catch(err => console.log(err))
+  }
+
   return (
-    <SourceContext.Provider value={{source, profile, project, bookmark, newSource, newPlaylist}}>
+    <SourceContext.Provider value={{source, profile, project, bookmark, newSource, newPlaylist, newProject, newBookmark}}>
       {props.children}
     </SourceContext.Provider>
   )
 };
-
 
 export default SourceContextProvider;

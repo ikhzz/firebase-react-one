@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
 import {storage} from "../firebaseConfig.js";
 
 export const StorageContext = createContext(),

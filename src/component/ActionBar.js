@@ -3,6 +3,7 @@ import { AuthContext } from "../context/AuthContext.js";
 import LoginForm from "./actionbarchild/LoginForm.js";
 import SourceForm from "./actionbarchild/SourceForm.js";
 import BookmarkForm from "./actionbarchild/BookmarkForm.js";
+import ProjectForm from './actionbarchild/ProjectForm.js';
 
 const ActionBar = () => {
   const { auth, signOut} = useContext(AuthContext)
@@ -27,6 +28,7 @@ const ActionBar = () => {
         <li className="inputTab">
           <span onClick={()=> setInput("source")}>Sumber</span>
           <span onClick={()=> setInput("bookmark")}>Bookmark</span>
+          <span onClick={()=> setInput("project")}>Project</span>
         </li>}
 
       {!auth && <LoginForm />}
@@ -34,6 +36,8 @@ const ActionBar = () => {
       {auth && input === "source" && <SourceForm />}
 
       {auth && input === "bookmark" && <BookmarkForm />}
+
+      {auth && input === "project" && <ProjectForm />}
       
       {auth && 
         <li>

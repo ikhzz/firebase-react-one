@@ -1,5 +1,5 @@
 import { SourceContext } from "../context/SourceContext.js";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 
 const MyProfile = () => {
   const {profile, project} = useContext(SourceContext)
@@ -42,10 +42,10 @@ const test = (data) => {
   return Object.entries(data).map(([key, value]) => {
     return (
       <li key={key}>
-        <span>Title</span> <span>: {value['projectTitle']}</span>
-        <span>Description</span> <span>: {value['projectDesc']}</span>
-        <span>Language</span> <span>: {value['projectLanguage']}</span>
-        <span>Link</span> <span>: {value['projectLink']}</span>
+        <span>Title</span> <span>: {value['title']}</span>
+        <span>Description</span> <span>: {value['desc']}</span>
+        <span>Language</span> <span>: {value['language']}</span>
+        <span>Link</span> <span>: {value['link']}</span>
       </li>
     )
   })

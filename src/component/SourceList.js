@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import {storage} from '../firebaseConfig.js';
+import { storage } from '../firebaseConfig.js';
 import { useHistory } from "react-router-dom";
 
 const SourceList = ({keys, detail}) => {
   const history = useHistory();
   const [url, setUrl] = useState(null)
-  console.log(keys)
   
+  // eslint-disable-next-line
   useEffect(()=> {
     storage.ref(`source/${keys}.jpg`).getDownloadURL().then(url => {
       setUrl(url)
