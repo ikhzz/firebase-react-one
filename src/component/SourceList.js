@@ -6,7 +6,7 @@ const SourceList = ({keys, detail}) => {
   const history = useHistory();
   const [url, setUrl] = useState(null)
   
-  // eslint-disable-next-line
+  // get image url with key after first load
   useEffect(()=> {
     storage.ref(`source/${keys}.jpg`).getDownloadURL().then(url => {
       setUrl(url)

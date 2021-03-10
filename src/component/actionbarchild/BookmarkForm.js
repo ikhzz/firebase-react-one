@@ -2,8 +2,8 @@ import { SourceContext } from "../../context/SourceContext";
 import { useContext, useState } from "react";
 
 const BookmarkForm = () => {
-  const {newBookmark} = useContext(SourceContext);
-  const [bookmark, setBookmark] = useState({ name: '', desc: '', link: ''})
+  const { newBookmark} = useContext(SourceContext);
+  const [ bookmark, setBookmark] = useState({ name: '', desc: '', link: ''})
 
   const handleInput = () => {
     newBookmark(bookmark.name, bookmark.desc, bookmark.link)

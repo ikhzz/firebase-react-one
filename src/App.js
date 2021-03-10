@@ -8,7 +8,8 @@ import SourceContextProvider from "./context/SourceContext.js"
 import StorageContextProvider from "./context/StorageContext.js";
 import Home from "./component/Home";
 import MyProfile from './component/MyProfile.js';
-import Bookmark from './component/Bookmark.js'
+import Bookmark from './component/Bookmark.js';
+import ErrorPage from './component/ErrorPage';
 
 const App = () => {
   return (
@@ -35,6 +36,9 @@ const App = () => {
               </Route>
               <Route path="/bookmark">
                 <Bookmark />
+              </Route>
+              <Route path="*">
+                <ErrorPage />
               </Route>
             </Switch>
             </div>

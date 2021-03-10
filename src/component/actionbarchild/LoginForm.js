@@ -4,10 +4,7 @@ import { AuthContext } from "../../context/AuthContext.js";
 const LoginForm = () => {
   const { signIn, authError} = useContext(AuthContext)
 
-  const [login, setLogin] = useState({
-    email : "",
-    pass : ""
-  })
+  const [login, setLogin] = useState({ email : "", pass : "" })
 
   const handleLogin = () => {
     signIn(login.email, login.pass)

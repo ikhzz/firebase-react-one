@@ -3,8 +3,6 @@ import { useContext } from "react";
 
 const MyProfile = () => {
   const {profile, project} = useContext(SourceContext)
-  console.log(profile)
-  console.log(project)
   return (
     <div className="myprofile">
       <section >
@@ -29,7 +27,7 @@ const MyProfile = () => {
       <section>
         <h1>My Project</h1>
         <ul className="project">
-          {project && test(project)}
+          {project && objectMap(project)}
         </ul>
       </section>
     </div>
@@ -37,8 +35,9 @@ const MyProfile = () => {
 }
 
 export default MyProfile;
-
-const test = (data) => {
+// figuring out how to map object with every model type
+// object map for data list
+const objectMap = (data) => {
   return Object.entries(data).map(([key, value]) => {
     return (
       <li key={key}>

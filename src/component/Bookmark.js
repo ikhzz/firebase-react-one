@@ -3,20 +3,20 @@ import { useContext } from "react";
 
 const Bookmark = () => {
   const {bookmark} = useContext(SourceContext)
-  console.log(bookmark)
   return (
     <div className="bookmark">
       <section><h1>My Bookmark</h1></section>
       <ul>
-        {bookmark && test(bookmark)}
+        {bookmark && objectMap(bookmark)}
       </ul>
     </div>
   )
 }
 
 export default Bookmark;
-
-const test = (data) => {
+// figuring out how to map object with every model type
+// object map for data list
+const objectMap = (data) => {
   return Object.entries(data).map(([key, value]) => {
     return (
       <li key={key}>

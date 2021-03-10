@@ -9,3 +9,8 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+// maybe i set the the component structure wrong, this is the easiest way i can think to manipulate navbar and content display
+document.querySelector('.nyam').addEventListener('click', () => {
+  document.querySelector('aside').classList.toggle('open')
+  document.querySelector('.main').classList.toggle('openc')
+})

@@ -7,7 +7,6 @@ import ProjectForm from './actionbarchild/ProjectForm.js';
 
 const ActionBar = () => {
   const { auth, signOut} = useContext(AuthContext)
-  
   const [input, setInput] = useState("source")
   const [display, setDisplay] = useState("none")
 

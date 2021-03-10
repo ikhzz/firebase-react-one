@@ -82,13 +82,24 @@ textarea {
   border-bottom: 2px solid rgb(180, 180, 180);
   margin-bottom: 10px;
 }
-/* root style */
-/* #root{
+.bookmark > ul, .project {
   display: grid;
-  justify-content: center;
-  width: 100%;
-} */
-
+  grid-template-columns: repeat(auto-fill, minmax(250px, auto));
+  gap: 10px;
+  padding:0px 5px;
+}
+.project li, .bookmark > ul > li, .detailList li {
+  padding: 10px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.6);
+  border: 4px solid black;
+  color: white;
+  display: grid;
+  grid-template-columns: 100px auto;
+  row-gap: 5px;
+}
+.home, .source, .bookmark, .myprofile {
+  animation: slidemain 0.8s forwards;
+}
 /* aside style */
 aside {
   position: fixed;
@@ -104,7 +115,7 @@ aside > ul{
   padding: 20px 0px;
   gap: 20px;
 }
-aside ul li:first-child, aside ul li:nth-child(3) {
+aside ul li:nth-child(2), aside ul li:nth-child(4) {
   justify-self: center;
 }
 aside img{
@@ -113,7 +124,34 @@ aside img{
   border-radius: 50%;
   box-shadow: 0px 0px 6px 3px white;
 }
-
+/* burger style */
+.nyam {
+  height: 35px;
+  width: 35px;
+  background-color: white;
+  position: fixed;
+  display: none;
+  left: 220px;
+  top: 25px;
+  border-radius: 5px;
+  justify-content: center;
+  align-content: center;
+}
+.nyam span, .nyam span::before, .nyam span::after {
+  height: 2px;
+  width: 20px;
+  background-color: grey;
+}
+.nyam span::before, .nyam span::after{
+  content: '';
+  position: absolute;
+}
+.nyam span::before {
+  top: 8px;
+}
+.nyam span::after {
+  top: 25px;
+}
 /* link style */
 .link {
   display: grid;
@@ -180,7 +218,6 @@ aside img{
 }
 /* inputTab style */
 .login li.inputTab{
-  /* display: grid; */
   grid-template-columns: auto auto auto;
   column-gap: 5px;
   border-bottom: 1px solid black;
@@ -209,8 +246,6 @@ aside img{
   display: grid;
   justify-items: center;
   align-content: center;
-  animation: slidemain 0.8s forwards;
-  /* background-color: red; */
 }
 .home img {
   border-radius: 50%;
@@ -218,8 +253,6 @@ aside img{
 /* source style */
 .source {
   padding: 0px 10px;
-  /* display: grid; */
-  animation: slidemain 0.8s forwards;
 }
 
 .allSource{
@@ -273,15 +306,7 @@ aside img{
   grid-template-columns: repeat(auto-fill, minmax(300px, auto));
   gap: 10px;
 }
-.detailList li {
-  padding: 10px;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.6);
-  border: 4px solid black;
-  color: white;
-  display: grid;
-  grid-template-columns: 100px auto;
-  row-gap: 10px;
-}
+
 .detailList li span:last-child {
   grid-column:span  2;
 }
@@ -314,39 +339,7 @@ aside img{
   margin-bottom: 20px;
   color: white;
 }
-/* project style */
-.project {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, auto));
-  gap: 5px;
-  padding-right: 5px;
-}
-.project li {
-  margin-top: 10px;
-  margin-left: 10px;
-  padding: 10px;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.6);
-  border: 4px solid black;
-  color: white;
-  display: grid;
-  grid-template-columns: 100px auto;
-  
-}
-/* bookmark style */
-.bookmark > ul {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, auto));
-  gap: 5px;
-  padding: 0px 5px;
-}
-.bookmark > ul > li {
-  padding: 10px;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.6);
-  border: 4px solid black;
-  color: white;
-  display: grid;
-  grid-template-columns: 100px auto;
-}
+
 @media screen and (max-width: 600px) {
   aside {
     transform: translateX(-100%);
@@ -356,5 +349,22 @@ aside img{
   }
   .about {
     grid-template-columns: auto;
+  }
+  .nyam {
+    display: grid;
+  }
+  .open{
+    animation: asideSlide 0.4s forwards;
+  }
+  .openc {
+      margin-left: 200px;
+      transition: all 0.4s ease;
+  }
+  @keyframes asideSlide {
+      0%{
+          transform: translateX(-100%);
+      } 100% {
+          transform: translateX(0%);
+      }
   }
 }

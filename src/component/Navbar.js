@@ -2,9 +2,13 @@ import { Link } from "react-router-dom";
 import img from '../assets/IMG_0109 (1).JPG';
 
 const Navbar = () => {
+  
   return (
-    <aside >
+    <aside>
       <ul>
+        <li className="nyam" >
+          <span></span>
+        </li>
         <li>
           <img src={img} alt="icon" />
         </li>

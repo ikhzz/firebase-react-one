@@ -4,23 +4,19 @@ import SourceList from "./SourceList";
 
 const SourceLearning = () => {
   const {source} = useContext(SourceContext);
-  console.log(source)
-  //source && test(source)
   return (
     <div className="source">
       <h1>Source</h1>
-      <ul className="allSource">{source && test(source)}</ul>
+      <ul className="allSource">{source && objectMap(source)}</ul>
     </div>
   )
 }
 
 export default SourceLearning;
-
-function test(data){
-  
+// figuring out how to map object with every model type
+// object map for data list
+function objectMap(data){
   return Object.entries(data).map(([key, value]) => {
-    console.log(key)
-    console.log(value)
     return (
       <li key={key}>
         <SourceList  keys={key} detail={value}/>

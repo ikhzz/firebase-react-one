@@ -12,7 +12,6 @@ const SourceForm = () => {
   })
 
   const inputSource = () => {
-
     newSource(source.name, source.from, source.language, source.image)
     setSource({
       name : "",

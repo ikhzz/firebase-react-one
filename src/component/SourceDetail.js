@@ -52,7 +52,7 @@ const SourceDetail = () => {
       </section>
       <section>
         <ul className="detailList">
-          {source[id]['list'] && generateList(source[id]['list'], auth)}
+          {source[id]['list'] && objectMap(source[id]['list'], auth)}
         </ul>
       </section> 
       </>
@@ -60,7 +60,7 @@ const SourceDetail = () => {
   )
 }
 
-function generateList(data, auth) {
+function objectMap(data, auth) {
   return Object.entries(data).map(([key,value]) => {
     return (
       <li  key={key}>
