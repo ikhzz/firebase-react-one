@@ -1,5 +1,6 @@
 import { SourceContext } from "../context/SourceContext.js";
 import { useContext } from "react";
+import SkeletonList from "./skeleton/SkeletonList.js";
 
 const Bookmark = () => {
   const {bookmark} = useContext(SourceContext)
@@ -7,6 +8,8 @@ const Bookmark = () => {
     <div className="bookmark">
       <section><h1>My Bookmark</h1></section>
       <ul>
+        {!bookmark && [0, 1, 2, 4].map(i => <SkeletonList key={i} /> )}
+        
         {bookmark && objectMap(bookmark)}
       </ul>
     </div>

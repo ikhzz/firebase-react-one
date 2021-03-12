@@ -81,6 +81,7 @@ textarea {
   width: 95%;
   border-bottom: 2px solid rgb(180, 180, 180);
   margin-bottom: 10px;
+  margin-top: 40px;
 }
 .bookmark > ul, .project {
   display: grid;

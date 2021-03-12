@@ -1,5 +1,6 @@
 import { useContext} from "react"
 import { SourceContext } from "../context/SourceContext";
+import SkeletonSource from "./skeleton/SkeletonSource";
 import SourceList from "./SourceList";
 
 const SourceLearning = () => {
@@ -7,7 +8,10 @@ const SourceLearning = () => {
   return (
     <div className="source">
       <h1>Source</h1>
-      <ul className="allSource">{source && objectMap(source)}</ul>
+      <ul className="allSource">
+        {!source && [0, 1, 2].map(i => <SkeletonSource key={i}/>)}
+        {source && objectMap(source)}
+      </ul>
     </div>
   )
 }

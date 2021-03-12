@@ -1,5 +1,7 @@
 import { SourceContext } from "../context/SourceContext.js";
 import { useContext } from "react";
+import SkeletonList from "./skeleton/SkeletonList.js";
+import Skeleton from "./skeleton/Skeleton.js";
 
 const MyProfile = () => {
   const {profile, project} = useContext(SourceContext)
@@ -14,6 +16,11 @@ const MyProfile = () => {
               <p>Email : {profile['email']}</p>
               <p>City : {profile['city']}</p>
             </>}
+            {!profile && <>
+              <Skeleton type="text2" />
+              <Skeleton type="text2" />
+              <Skeleton type="text2" />
+            </>}
           </li>
           <li>
             {profile && <>
@@ -21,12 +28,18 @@ const MyProfile = () => {
             <p>Birthday : {profile['birthday']}</p>
             <p>Hobby : {profile['hobby']}</p>
             </>}
+            {!profile && <>
+              <Skeleton type="text2" />
+              <Skeleton type="text2" />
+              <Skeleton type="text2" />
+            </>}
           </li>
         </ul>
       </section>
       <section>
         <h1>My Project</h1>
         <ul className="project">
+          {!project && [0,1,2,3].map(i => <SkeletonList key={i}/>)}
           {project && objectMap(project)}
         </ul>
       </section>
