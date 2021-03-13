@@ -25,7 +25,7 @@ const objectMap = (data) => {
       <li key={key}>
         <span>Name</span> <span>: {value['name']}</span>
         <span>Description</span> <span>: {value['desc']}</span>
-        <span>Link</span> <span>: {value['link']}</span>
+        <span>Link</span> <span>: <a href={value['link']}>{value['name']}</a></span>
       </li>
     )
   })

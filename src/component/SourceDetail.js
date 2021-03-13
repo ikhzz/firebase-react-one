@@ -64,8 +64,8 @@ function objectMap(data, auth) {
   return Object.entries(data).map(([key,value]) => {
     return (
       <li  key={key}>
-        <span>Playlist Name</span><span>: {value['desc']}</span>
-        <span>Playlist Desc</span><span>: {value['name']}</span>
+        <span>Playlist Name</span><span>: {value['name']}</span>
+        <span>Playlist Desc</span><span>: {value['desc']}</span>
         <span>
           {/* on the second thought to add another layer list pages is annoying, on hold for idea */}
           {auth && <button>Add Notes</button>}
